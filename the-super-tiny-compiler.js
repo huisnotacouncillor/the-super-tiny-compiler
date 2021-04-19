@@ -79,36 +79,41 @@
  * Today we're going to write a compiler together. But not just any compiler... A
  * super duper teeny tiny compiler! A compiler that is so small that if you
  * remove all the comments this file would only be ~200 lines of actual code.
- *
+ * 今天我们要一块写一个编译器，但不仅仅是一个很傻瓜式，很小的编译器，而是一个如此小的编译器， 在你去除注释之后，实际上只有两百行代码 
  * We're going to compile some lisp-like function calls into some C-like
  * function calls.
+ * 要把像lisp的函数调用编译成类C的函数调用
  *
  * If you are not familiar with one or the other. I'll just give you a quick intro.
- *
+ * 假如你不熟悉LISP和C，将简单一下
  * If we had two functions `add` and `subtract` they would be written like this:
- *
+ * 假设有“add”和"subtract"两个函数, 他们被写成如下的样子
  *                  LISP                      C
  *
  *   2 + 2          (add 2 2)                 add(2, 2)
  *   4 - 2          (subtract 4 2)            subtract(4, 2)
  *   2 + (4 - 2)    (add 2 (subtract 4 2))    add(2, subtract(4, 2))
  *
- * Easy peezy right?
+ * Easy peezy right? 很简单对吧？
  *
  * Well good, because this is exactly what we are going to compile. While this
  * is neither a complete LISP or C syntax, it will be enough of the syntax to
  * demonstrate many of the major pieces of a modern compiler.
+ * 非常好, 因为这就是将要确切编译的东西, , 但是这既不是完整的LISP,也不是C的语法,  但是这就有了足够的语法来演示现代编译器的许多主要部分。
  */
 
 /**
  * Most compilers break down into three primary stages: Parsing, Transformation,
  * and Code Generation
+ * 绝大部分的编译过程,可分为三个阶段, 解析, 转换以及代码生成.
  *
  * 1. *Parsing* is taking raw code and turning it into a more abstract
  *    representation of the code.
+ * 1.解析, 源代码和源代码转换成更抽象的代码
  *
  * 2. *Transformation* takes this abstract representation and manipulates to do
  *    whatever the compiler wants it to.
+ * 2.转换 更抽象的表示,和操作,来做编译器想让它做的事
  *
  * 3. *Code Generation* takes the transformed representation of the code and
  *    turns it into new code.
@@ -119,7 +124,7 @@
  * -------
  *
  * Parsing typically gets broken down into two phases: Lexical Analysis and
- * Syntactic Analysis.
+ * Syntactic Analysis.解析通常被分成两个阶段: 词法分析和语法分析
  *
  * 1. *Lexical Analysis* takes the raw code and splits it apart into these things
  *    called tokens by a thing called a tokenizer (or lexer).
