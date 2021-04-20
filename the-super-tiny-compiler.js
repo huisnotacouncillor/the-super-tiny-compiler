@@ -117,6 +117,7 @@
  *
  * 3. *Code Generation* takes the transformed representation of the code and
  *    turns it into new code.
+ * 代码生成
  */
 
 /**
@@ -127,20 +128,24 @@
  * Syntactic Analysis.解析通常被分成两个阶段: 词法分析和语法分析
  *
  * 1. *Lexical Analysis* takes the raw code and splits it apart into these things
- *    called tokens by a thing called a tokenizer (or lexer).
+ *    called tokens by a thing called a tokenizer (or lexer). 词法分析
  *
  *    Tokens are an array of tiny little objects that describe an isolated piece
  *    of the syntax. They could be numbers, labels, punctuation, operators,
  *    whatever.
+ * 
+ * 1.“词法分析” 提取源代码，并通过名叫tokenizer（标记器）（或者词法分析器）的东西将源代码分割成一个个小的被称之为标记的东西
+ *    标记是一组很小很碎的对象，用来描述词法的独立片段， 标记可以是数字， 标签， 标点符号， 操作符等等
  *
  * 2. *Syntactic Analysis* takes the tokens and reformats them into a
  *    representation that describes each part of the syntax and their relation
  *    to one another. This is known as an intermediate representation or
- *    Abstract Syntax Tree.
- *
+ *    Abstract Syntax Tree.语法分析
+ *    
  *    An Abstract Syntax Tree, or AST for short, is a deeply nested object that
  *    represents code in a way that is both easy to work with and tells us a lot
  *    of information.
+ * 2.“语法分析”提取标记，并将其重新格式化成一种表现形式，用来描述词法的每一部分以及每一个部分之间的关系， 这被成为中间表示或者抽象语法树
  *
  * For the following syntax:
  *
@@ -224,7 +229,7 @@
  * Since we’re targeting a new language, we’re going to focus on creating an
  * entirely new AST that is specific to the target language.
  *
- * Traversal
+ * Traversal 遍历
  * ---------
  *
  * In order to navigate through all of these nodes, we need to be able to
