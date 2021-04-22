@@ -169,7 +169,6 @@
  *   ]
  *
  * And an Abstract Syntax Tree (AST) might look like this:
- * 抽象语法树可能看起来像这样
  *
  *   {
  *     type: 'Program',
@@ -243,6 +242,8 @@
  * entirely new AST that is specific to the target language.
  * 假如我们的目标是转换成一种新语言，我们将专注于创建用于特定语言的新的AST（抽象语法树）
  * 由于我们的目标是一种新语言，因此我们将专注于创建特定于目标语言的全新AST。
+ * 
+ * 
  * Traversal 遍历
  * ---------
  *
