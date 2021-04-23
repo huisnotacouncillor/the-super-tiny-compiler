@@ -375,33 +375,52 @@
  * things that overlap with transformation, but for the most part code
  * generation just means take our AST and string-ify code back out.
  * 编译的最后一个阶段是代码生成，
+ * 
+ * 编译器的最后阶段是代码生成。 有时，编译器会执行与转换重叠的操作，
+ * 但是在大多数情况下，代码生成只是意味着撤回AST和字符串化代码。
  *
  * Code generators work several different ways, some compilers will reuse the
  * tokens from earlier, others will have created a separate representation of
  * the code so that they can print nodes linearly, but from what I can tell most
  * will use the same AST we just created, which is what we’re going to focus on.
+ * 
+ * 代码生成器以几种不同的方式工作，一些编译器将重用较早版本的tokens(标记)，另一些将创建代码的单独表示，
+ * 以便它们可以线性打印节点，但据我所知，大多数将使用我们刚创建的AST， 这就是我们要重点关注的。
  *
  * Effectively our code generator will know how to “print” all of the different
  * node types of the AST, and it will recursively call itself to print nested
  * nodes until everything is printed into one long string of code.
+ * 
+ * 有效地，我们的代码生成器将知道如何“打印” AST的所有不同节点类型，
+ * 并且它将递归调用自身以打印嵌套节点，直到将所有内容打印到一个长代码串中为止。
  */
 
 /**
  * And that's it! That's all the different pieces of a compiler.
+ * 就是这样！ 那就是编译器的所有不同部分。
  *
  * Now that isn’t to say every compiler looks exactly like I described here.
  * Compilers serve many different purposes, and they might need more steps than
  * I have detailed.
+ * 
+ * 现在，这并不是说每个编译器看起来都和我在这里描述的完全一样。 
+ * 编译器有多种用途，可能需要比我详细介绍的步骤更多的步骤。
  *
  * But now you should have a general high-level idea of what most compilers look
  * like.
+ * 
+ * 但是现在您应该对大多数编译器的外观有一个大致的总体了解。
  *
  * Now that I’ve explained all of this, you’re all good to go write your own
  * compilers right?
+ * 
+ * 既然我已经解释了所有这些，那么您就可以编写自己的编译器了，对吗？
  *
  * Just kidding, that's what I'm here to help with :P
- *
+ * 只是开个玩笑，这就是我在这里为您提供的帮助
+ * 
  * So let's begin...
+ * 开始吧
  */
 
 /**
@@ -414,15 +433,20 @@
 /**
  * We're gonna start off with our first phase of parsing, lexical analysis, with
  * the tokenizer.
+ * 让我们用tokenizer开始解析的第一个阶段， 词法分析
  *
  * We're just going to take our string of code and break it down into an array
  * of tokens.
+ * 仅仅是将代码字符串拆解成token（标记）数组
+ * 
+ * 我们将采用我们的代码字符串并将其分解为令牌数组。
  *
  *   (add 2 (subtract 4 2))   =>   [{ type: 'paren', value: '(' }, ...]
  */
 
 // We start by accepting an input string of code, and we're gonna set up two
 // things...
+// 
 function tokenizer(input) {
 
   // A `current` variable for tracking our position in the code like a cursor.
